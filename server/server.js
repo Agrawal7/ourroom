@@ -67,17 +67,13 @@ callback({ok:true})
 /* SEND MESSAGE */
 
 socket.on("send_message",(data)=>{
-
 io.to(data.room).emit("receive_message",data)
-
 })
 
 /* TYPING INDICATOR */
 
 socket.on("typing",(data)=>{
-
 socket.to(data.room).emit("user_typing",data)
-
 })
 
 /* DISCONNECT */
@@ -93,13 +89,9 @@ if(!room || !rooms[room]) return
 rooms[room]--
 
 if(rooms[room] <= 0){
-
 delete rooms[room]
-
 }else{
-
 io.to(room).emit("room_users",rooms[room])
-
 }
 
 })
